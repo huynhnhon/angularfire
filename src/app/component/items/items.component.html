@@ -1,0 +1,24 @@
+<div *ngIf="items?.length > 0" [@goals]="items.length">
+  <ul *ngFor="let item of items" class="collection">
+    <li class="collection-item" (click)="editItem($event, item)" style="cursor: pointer">
+      <strong >{{item.title}}</strong>: {{item.content}}
+      
+      <!-- <i *ngIf="editState && updateItem.id == item.id" (click)="collapse()" class="fa fa-times"></i> -->
+
+      <div *ngIf="editState && updateItem.id == item.id">
+        <form (ngSubmit)="update(item)">
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text" [(ngModel)]="item.title" name="title">
+            </div>
+            <div class="input-field col s6">
+              <input type="text" [(ngModel)]="item.content" name="content">
+            </div>
+            <input type="submit" value="UPDATE" class="btn waves-effect blue">
+            <button (click)="delItem($event, item)" class="btn red">DELETE</button>
+          </div>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>

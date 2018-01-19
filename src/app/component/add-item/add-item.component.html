@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Add Item</span>
+    <form (ngSubmit)="onSubmit()" class="col s6">
+      <div class="row">
+        <div class="input-field col s6">
+          <input autofocus type="text" placeholder="Add-Title" [(ngModel)]="item.title" name="title">
+        </div>
+        <div class="input-field col s6">
+          <input type="text" placeholder="Add-Content" [(ngModel)]="item.content" name="content">
+        </div>
+        <button type="submit" class="btn waves-effect"><strong style="font-size: 19px">SUBMIT </strong><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+      </div>
+    </form>
+  </div>
+</div>
