@@ -1,5 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
+::-webkit-scrollbar-track
+{
+	background-color: rgba(245, 245, 245, 0);
+}
+
+::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: rgba(245, 245, 245, 0);
+}
+
+::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+	background-color: #000000;
+}
 body {
   background: url('./body.jpg');
   background-size: cover;
