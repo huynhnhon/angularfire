@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemService } from '../../services/item.service';
-import { Item } from '../../models/Item';
+import { ItemService } from '../../../services/item.service';
+import { Item } from '../../../models/Item';
 
 @Component({
   selector: 'app-add-item',
@@ -10,8 +10,8 @@ import { Item } from '../../models/Item';
 export class AddItemComponent implements OnInit {
 
   item: Item = {
-    title: '',
-    content: ''
+    product_name: '',
+    create_at: Date.now()
   };
 
   constructor(private itemService: ItemService) { }
@@ -20,10 +20,9 @@ export class AddItemComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.item.title !== '' && this.item.content !== '') {
+    if (this.item.product_name !== '') {
       this.itemService.addItem(this.item);
-      this.item.title = '';
-      this.item.content = '';
+      this.item.product_name = '';
     }
   }
 

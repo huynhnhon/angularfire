@@ -1,5 +1,5 @@
 export interface Item {
     id?: String;
-    title?: String;
-    content?: String;
+    product_name?: String;
+    create_at? : Number;
 }

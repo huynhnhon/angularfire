@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">ADD USER</span>
+    <form (ngSubmit)="onSubmit()" class="col s6">
+      <div class="row">
+        <div class="input-field col s6">
+          <input autofocus type="text" [(ngModel)]="user.name" placeholder="Add-Name" name="name">
+        </div>
+        <div class="input-field col s6">
+          <input type="number" [(ngModel)]="user.age" placeholder="Add-Age" name="age">
+        </div>
+        <button type="submit" class="btn green waves-effect">
+          <strong style="font-size: 19px">SUBMIT </strong>
+          <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="users?.length > 0">
+  <ul *ngFor="let user of users" class="collection">
+    <li class="collection-item" (click)="editUser($event, user)" style="cursor: pointer">
+      <strong>{{user.name}}</strong>: {{user.age}} years old, {{user.create_at | date: 'dd/MM/yyyy'}} - {{user.create_at | date:
+      'hh:mm:ss'}}
+      <!-- <i *ngIf="editState && updateuser.id == user.id" (click)="collapse()" class="fa fa-times"></i> -->
+      <div *ngIf="editState && updateUser.id == user.id">
+        <form (ngSubmit)="update(user)">
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text" [(ngModel)]="user.name" name="name">
+            </div>
+            <div class="input-field col s6">
+              <input type="number" [(ngModel)]="user.age" name="age">
+            </div>
+            <input type="submit" value="UPDATE" class="btn waves-effect blue">
+            <button (click)="delUser($event, user)" class="btn red">DELETE</button>
+          </div>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>

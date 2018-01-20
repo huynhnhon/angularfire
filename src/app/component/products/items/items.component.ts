@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemService } from '../../services/item.service';
-import { Item } from '../../models/Item';
+import { ItemService } from '../../../services/item.service';
+import { Item } from '../../../models/Item';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 
 @Component({

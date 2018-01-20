@@ -12,7 +12,7 @@ export class ItemService {
   itemsDoc: AngularFirestoreDocument<Item>;
 
   constructor(public afs: AngularFirestore) {
-    this.itemsCollection = this.afs.collection('items', ref => ref.orderBy('title', 'asc'));
+    this.itemsCollection = this.afs.collection('connection').doc('dV9q8KDEn4EUboYYHiNo').collection('products');
     this.items = this.itemsCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Item;
@@ -31,12 +31,14 @@ export class ItemService {
   }
 
   deleteItem(item: Item) {
-    this.itemsDoc = this.afs.doc(`items/${item.id}`);
+    let id: string = item.id;
+    this.itemsDoc = this.itemsCollection.doc(id);
     this.itemsDoc.delete();
   }
 
   update(item: Item) {
-    this.itemsDoc = this.afs.doc(`items/${item.id}`);
+    let id: string = item.id;
+    this.itemsDoc = this.itemsCollection.doc(id);
     this.itemsDoc.update(item);
   }
 
